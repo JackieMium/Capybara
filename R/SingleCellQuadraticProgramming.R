@@ -59,14 +59,14 @@ single.round.QP.analysis <- function(ref, sc.data, scale.bulk.sc = "scale", unix
                                 single.cell.transcriptome = log.scale.ls.sc[[2]],
                                 unix.parallel = unix.par, windows.parallel = windows.par,
                                 parallel.cores = n.cores, force.eq = force.eq)
-    write.csv(qp.rslt, paste0(save.to.path, save.to.filename, "_scale.csv"), quote = F, row.names = F)
+    write.csv(qp.rslt, file.path(save.to.path, paste0(save.to.filename, "_scale.csv")), quote = F, row.names = F)
   } else {
     if (scale.bulk.sc == "non-scale") {
       qp.rslt <- sc.quad.prog.run(as.matrix(log.norm.ls.sc[[1]]),
                                   single.cell.transcriptome = log.norm.ls.sc[[2]],
                                   unix.parallel = unix.par, windows.parallel = windows.par,
                                   parallel.cores = n.cores, force.eq = force.eq)
-      write.csv(qp.rslt, paste0(save.to.path, save.to.filename, "_non_scale.csv"), quote = F, row.names = F)
+      write.csv(qp.rslt, file.path(save.to.path, paste0(save.to.filename, "_non_scale.csv")), quote = F, row.names = F)
     } else {
       qp.rslt.scl <- sc.quad.prog.run(as.matrix(log.scale.ls.sc[[1]]),
                                       single.cell.transcriptome = log.scale.ls.sc[[2]],
@@ -76,8 +76,8 @@ single.round.QP.analysis <- function(ref, sc.data, scale.bulk.sc = "scale", unix
                                           single.cell.transcriptome = log.norm.ls.sc[[2]],
                                           unix.parallel = unix.par, windows.parallel = windows.par,
                                           parallel.cores = n.cores, force.eq = force.eq)
-      write.csv(qp.rslt.scl, paste0(save.to.path, save.to.filename, "_scale.csv"), quote = F, row.names = F)
-      write.csv(qp.rslt.non.scl, paste0(save.to.path, save.to.filename, "_non_scale.csv"), quote = F, row.names = F)
+      write.csv(qp.rslt.scl, file.path(save.to.path, paste0(save.to.filename, "_scale.csv")), quote = F, row.names = F)
+      write.csv(qp.rslt.non.scl, file.path(save.to.path, paste0(save.to.filename, "_non_scale.csv")), quote = F, row.names = F)
     }
   }
 }
